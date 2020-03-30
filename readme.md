@@ -1,5 +1,16 @@
 # PeeBu
 
+## Teams member
+
+- Javier Portaluppi - 2190271
+
+## Google VMs
+
+- [Jenkins](http://34.77.48.172)
+- [Staging](http://34.91.165.253)
+- [Production](http://34.91.235.197)
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.15.
 
 ## Development server
