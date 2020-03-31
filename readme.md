@@ -10,6 +10,21 @@
 - [Staging](http://34.91.165.253)
 - [Production](http://34.91.235.197)
 
+## Users Stories
+
+**Landing Page:**
+* As a user I want to see all money transactions in a grid distinguished by type (income/outcome) and classification. 
+* As a user I want to set a category to a transaction (we can have multiple icons and highlight only the selected one.).
+* As a user I want to filter transactions by: classification, date, type, source, entity, amount.
+* As a user I want to see top 5 expenses of the month in a chart.
+* As a user I want to know what transactions are “unclassified”
+* As a user I want to see top 3 entities of income.
+
+**Transaction Details Page:**
+* As a user I want to see the detail of a transaction.
+
+
+# Angular section
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.15.
 
