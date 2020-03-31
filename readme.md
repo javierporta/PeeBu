@@ -23,6 +23,8 @@
 **Transaction Details Page:**
 * As a user I want to see the detail of a transaction.
 
+## Mockups
+Please refer to [shared album](https://photos.app.goo.gl/pf9LuszbKKpEPA8b8)
 
 # Angular section
 
