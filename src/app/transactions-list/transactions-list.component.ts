@@ -5,7 +5,7 @@ import { TransactionModel } from "../models/transaction-model";
 @Component({
   selector: "app-transactions-list",
   templateUrl: "./transactions-list.component.html",
-  styleUrls: ["./transactions-list.component.scss"]
+  styleUrls: ["./transactions-list.component.scss"],
 })
 export class TransactionsListComponent implements OnInit {
   transactions: TransactionModel[];
@@ -14,13 +14,13 @@ export class TransactionsListComponent implements OnInit {
 
   ngOnInit() {
     this.transactionService.getTransactions().subscribe(
-      result => this.onGetTransactionsSuccess(result),
-      error => this.onGetTransactionsError(error)
+      (result) => this.onGetTransactionsSuccess(result),
+      (error) => this.onGetTransactionsError(error)
     );
   }
 
   onGetTransactionsSuccess(result: TransactionModel[]) {
-    let gridData = result.map(item => {
+    let gridData = result.map((item) => {
       item.createdAt = new Date(item.createdAt);
       return item;
     });
