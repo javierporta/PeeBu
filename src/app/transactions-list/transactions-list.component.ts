@@ -21,10 +21,13 @@ export class TransactionsListComponent implements OnInit {
 
   onGetTransactionsSuccess(result: TransactionModel[]) {
     let gridData = result.map((item) => {
+      //We need to map because json from API is not correct (all props are strings)
       item.createdAt = new Date(item.createdAt);
+      item.amount = parseFloat(item.amount.toString());
       return item;
     });
     this.transactions = gridData;
+    console.log(this.transactions);
   }
 
   onGetTransactionsError(error) {}
