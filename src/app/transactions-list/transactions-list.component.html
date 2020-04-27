@@ -1,19 +1,32 @@
 <span></span>
 <h2 id="transactionsSubtitle" class="text-center">Transactions</h2>
 
-<kendo-grid [data]="transactions" [height]="410" id="detailsKendoGrid">
-  <kendo-grid-column field="id" title="Id" width="40"> </kendo-grid-column>
+<kendo-grid
+  [kendoGridBinding]="transactions"
+  [height]="410"
+  id="detailsKendoGrid"
+  filterable="menu"
+>
+  <kendo-grid-column field="id" title="Id" width="40" [filterable]="false">
+  </kendo-grid-column>
   <kendo-grid-column
     field="createdAt"
     title="Created Date"
     format="{0: dd/MM/yyyy h:mm a }"
     width="180"
+    filter="date"
   >
   </kendo-grid-column>
   <kendo-grid-column field="entity" title="Entity"> </kendo-grid-column>
-  <kendo-grid-column field="amount" title="Price" width="80">
+  <kendo-grid-column
+    field="amount"
+    title="Price"
+    width="80"
+    filter="numeric"
+    format="{0:c}"
+  >
   </kendo-grid-column>
-  <kendo-grid-column field="type" title="Type" width="80"> </kendo-grid-column>
-  <kendo-grid-column field="source" title="Source" width="80">
+  <kendo-grid-column field="type" title="Type" width="100"> </kendo-grid-column>
+  <kendo-grid-column field="source" title="Source" width="100">
   </kendo-grid-column>
 </kendo-grid>
