@@ -6,8 +6,9 @@
   [height]="410"
   id="detailsKendoGrid"
   filterable="menu"
+  [sortable]="true"
 >
-  <kendo-grid-column field="id" title="Id" width="40" [filterable]="false">
+  <kendo-grid-column field="id" title="Id" width="60" [filterable]="false">
   </kendo-grid-column>
   <kendo-grid-column
     field="createdAt"
@@ -21,12 +22,12 @@
   <kendo-grid-column
     field="amount"
     title="Price"
-    width="80"
+    width="100"
     filter="numeric"
     format="{0:c}"
   >
   </kendo-grid-column>
   <kendo-grid-column field="type" title="Type" width="100"> </kendo-grid-column>
-  <kendo-grid-column field="source" title="Source" width="100">
+  <kendo-grid-column field="source" title="Source" width="120">
   </kendo-grid-column>
 </kendo-grid>

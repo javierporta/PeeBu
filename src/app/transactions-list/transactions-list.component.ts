@@ -24,6 +24,7 @@ export class TransactionsListComponent implements OnInit {
       //We need to map because json from API is not correct (all props are strings)
       item.createdAt = new Date(item.createdAt);
       item.amount = parseFloat(item.amount.toString());
+      item.id = parseFloat(item.id.toString());
       return item;
     });
     this.transactions = gridData;
