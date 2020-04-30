@@ -17,6 +17,14 @@ export class TransactionsService {
       .get<TransactionModel[]>(`${environment.apiUrl}/sq/transactions`)
       .subscribe(
         (result) => {
+          result = result.map((item) => {
+            //We need to map because json from API is not correct (all props are strings)
+            item.createdAt = new Date(item.createdAt);
+            item.amount = parseFloat(item.amount.toString());
+            item.id = parseFloat(item.id.toString());
+            return item;
+          });
+
           this._transactions.next(result);
         },
         (error) => {
@@ -32,4 +40,8 @@ export class TransactionsService {
   public readonly transactions: Observable<
     TransactionModel[]
   > = this._transactions.asObservable();
+
+  setTransactions(transactions: TransactionModel[]) {
+    this._transactions.next(transactions);
+  }
 }
