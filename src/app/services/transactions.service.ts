@@ -15,9 +15,14 @@ export class TransactionsService {
   loadTransactions() {
     return this.http
       .get<TransactionModel[]>(`${environment.apiUrl}/sq/transactions`)
-      .subscribe((result) => {
-        this._transactions.next(result);
-      });
+      .subscribe(
+        (result) => {
+          this._transactions.next(result);
+        },
+        (error) => {
+          console.error("API Error" + error);
+        }
+      );
   }
 
   private _transactions: BehaviorSubject<
