@@ -13,22 +13,14 @@ export class TransactionsListComponent implements OnInit {
   constructor(private transactionService: TransactionsService) {}
 
   ngOnInit() {
-    this.transactionService.getTransactions().subscribe(
+    this.transactionService.transactions.subscribe(
       (result) => this.onGetTransactionsSuccess(result),
       (error) => this.onGetTransactionsError(error)
     );
   }
 
   onGetTransactionsSuccess(result: TransactionModel[]) {
-    let gridData = result.map((item) => {
-      //We need to map because json from API is not correct (all props are strings)
-      item.createdAt = new Date(item.createdAt);
-      item.amount = parseFloat(item.amount.toString());
-      item.id = parseFloat(item.id.toString());
-      return item;
-    });
-    this.transactions = gridData;
-    console.log(this.transactions);
+    this.transactions = result;
   }
 
   onGetTransactionsError(error) {}

@@ -10,6 +10,7 @@ import { ChartComponent } from "./chart/chart.component";
 import { HttpClientModule } from "@angular/common/http";
 import { GridModule } from '@progress/kendo-angular-grid';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BalanceComponent } from './balance/balance.component';
 
 
 
@@ -19,7 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HeaderComponent,
     TransactionsListComponent,
     HomeComponent,
-    ChartComponent
+    ChartComponent,
+    BalanceComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, GridModule, BrowserAnimationsModule],
   providers: [],
