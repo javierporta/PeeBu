@@ -13,7 +13,7 @@ export class TransactionsListComponent implements OnInit {
   constructor(private transactionService: TransactionsService) {}
 
   ngOnInit() {
-    this.transactionService.getTransactions().subscribe(
+    this.transactionService.transactions.subscribe(
       (result) => this.onGetTransactionsSuccess(result),
       (error) => this.onGetTransactionsError(error)
     );
