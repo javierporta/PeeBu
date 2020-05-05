@@ -5,4 +5,5 @@ export class TransactionModel {
   amount: number;
   type: string;
   source: string;
+  classification: string;
 }
