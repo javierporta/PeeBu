@@ -25,11 +25,8 @@ export class TransactionsListComponent implements OnInit {
 
   onGetTransactionsError(error) {}
 
-  onClickClassifyBtn(rowIndex: number) {
-    console.log(rowIndex);
-
-    this.transactions[rowIndex].classification = "bola";
-
+  onClickClassifyBtn(rowIndex: number, classification: string) {
+    this.transactions[rowIndex].classification = classification;
     this.transactionService.setTransactions(this.transactions);
   }
 }

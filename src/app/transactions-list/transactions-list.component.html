@@ -34,8 +34,44 @@
   </kendo-grid-column>
   <kendo-grid-command-column title="" width="95">
     <ng-template kendoGridCellTemplate let-rowIndex="rowIndex">
-      <button class="k-primary" (click)="onClickClassifyBtn(rowIndex)">
-        Classify
+      <button class="k-primary" (click)="onClickClassifyBtn(rowIndex, 'food')">
+        C
+      </button>
+      <button
+        class="k-primary"
+        (click)="onClickClassifyBtn(rowIndex, 'health')"
+      >
+        H
+      </button>
+      <button
+        class="k-primary"
+        (click)="onClickClassifyBtn(rowIndex, 'education')"
+      >
+        E
+      </button>
+      <button
+        class="k-primary"
+        (click)="onClickClassifyBtn(rowIndex, 'household')"
+      >
+        H
+      </button>
+      <button
+        class="k-primary"
+        (click)="onClickClassifyBtn(rowIndex, 'entertainment')"
+      >
+        E
+      </button>
+      <button
+        class="k-primary"
+        (click)="onClickClassifyBtn(rowIndex, 'transportation')"
+      >
+        T
+      </button>
+      <button class="k-primary" (click)="onClickClassifyBtn(rowIndex, 'vet')">
+        V
+      </button>
+      <button class="k-primary" (click)="onClickClassifyBtn(rowIndex, 'other')">
+        O
       </button>
     </ng-template>
   </kendo-grid-command-column>
