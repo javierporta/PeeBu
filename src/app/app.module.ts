@@ -8,11 +8,10 @@ import { AppRoutingModule } from "./app-routing.module";
 import { HomeComponent } from "./home/home.component";
 import { ChartComponent } from "./chart/chart.component";
 import { HttpClientModule } from "@angular/common/http";
-import { GridModule } from '@progress/kendo-angular-grid';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BalanceComponent } from './balance/balance.component';
-
-
+import { GridModule } from "@progress/kendo-angular-grid";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BalanceComponent } from "./balance/balance.component";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 @NgModule({
   declarations: [
@@ -21,10 +20,17 @@ import { BalanceComponent } from './balance/balance.component';
     TransactionsListComponent,
     HomeComponent,
     ChartComponent,
-    BalanceComponent
+    BalanceComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, GridModule, BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    GridModule,
+    BrowserAnimationsModule,
+    FontAwesomeModule,
+  ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
