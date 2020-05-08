@@ -32,47 +32,16 @@
   </kendo-grid-column>
   <kendo-grid-column field="classification" title="Classification" width="140">
   </kendo-grid-column>
-  <kendo-grid-command-column title="" width="95">
+  <kendo-grid-command-column title="" width="150">
     <ng-template kendoGridCellTemplate let-rowIndex="rowIndex">
-      <button class="k-primary" (click)="onClickClassifyBtn(rowIndex, 'food')">
-        C
-      </button>
-      <button
-        class="k-primary"
-        (click)="onClickClassifyBtn(rowIndex, 'health')"
-      >
-        H
-      </button>
-      <button
-        class="k-primary"
-        (click)="onClickClassifyBtn(rowIndex, 'education')"
-      >
-        E
-      </button>
-      <button
-        class="k-primary"
-        (click)="onClickClassifyBtn(rowIndex, 'household')"
-      >
-        H
-      </button>
-      <button
-        class="k-primary"
-        (click)="onClickClassifyBtn(rowIndex, 'entertainment')"
-      >
-        E
-      </button>
-      <button
-        class="k-primary"
-        (click)="onClickClassifyBtn(rowIndex, 'transportation')"
-      >
-        T
-      </button>
-      <button class="k-primary" (click)="onClickClassifyBtn(rowIndex, 'vet')">
-        V
-      </button>
-      <button class="k-primary" (click)="onClickClassifyBtn(rowIndex, 'other')">
-        O
-      </button>
+      <span *ngFor="let classificationType of classificationTypes">
+        <a
+          class="btn btn-small"
+          (click)="onClickClassifyBtn(rowIndex, classificationType.name)"
+        >
+          <fa-icon [icon]="classificationType.icon" size="xs"></fa-icon>
+        </a>
+      </span>
     </ng-template>
   </kendo-grid-command-column>
 </kendo-grid>
