@@ -33,8 +33,8 @@
   <kendo-grid-column field="classification" title="Classification" width="140">
   </kendo-grid-column>
   <kendo-grid-command-column title="" width="95">
-    <ng-template kendoGridCellTemplate let-dataItem>
-      <button class="k-primary" (click)="onClickClassifyBtn(dataItem)">
+    <ng-template kendoGridCellTemplate let-rowIndex="rowIndex">
+      <button class="k-primary" (click)="onClickClassifyBtn(rowIndex)">
         Classify
       </button>
     </ng-template>

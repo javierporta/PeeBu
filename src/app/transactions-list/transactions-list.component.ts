@@ -25,7 +25,11 @@ export class TransactionsListComponent implements OnInit {
 
   onGetTransactionsError(error) {}
 
-  onClickClassifyBtn(event): void {
-    console.log(event);
+  onClickClassifyBtn(rowIndex: number) {
+    console.log(rowIndex);
+
+    this.transactions[rowIndex].classification = "bola";
+
+    this.transactionService.setTransactions(this.transactions);
   }
 }
