@@ -41,6 +41,6 @@ export class BalanceComponent implements OnInit {
   }
 
   isIncomeTransactionType(transaction: TransactionModel): boolean {
-    return transaction.type === "payment" || transaction.type === "deposit";
+    return transaction.type === "credit";
   }
 }
