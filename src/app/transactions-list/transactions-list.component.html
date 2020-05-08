@@ -37,6 +37,9 @@
     <ng-template kendoGridCellTemplate let-rowIndex="rowIndex">
       <span *ngFor="let classificationType of classificationTypes">
         <a
+          id="{{
+            'classify_' + classificationType.name + '_' + rowIndex + '_btn'
+          }}"
           href="#/"
           role="button"
           aria-pressed="true"
