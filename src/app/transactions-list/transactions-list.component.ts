@@ -24,4 +24,8 @@ export class TransactionsListComponent implements OnInit {
   }
 
   onGetTransactionsError(error) {}
+
+  onClickClassifyBtn(event): void {
+    console.log(event);
+  }
 }
