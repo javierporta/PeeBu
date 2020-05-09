@@ -1,7 +1,17 @@
 import { Component, OnInit } from "@angular/core";
 import { TransactionsService } from "../services/transactions.service";
 import { TransactionModel } from "../models/transaction-model";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCoffee,
+  faHamburger,
+  faMedkit,
+  faUniversity,
+  faHouseUser,
+  faFilm,
+  faSubway,
+  faDog,
+  faThLarge,
+} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-transactions-list",
@@ -35,14 +45,14 @@ export class TransactionsListComponent implements OnInit {
 
   initClassification() {
     var classificationTypes = [
-      { name: "food", icon: faCoffee },
-      { name: "health", icon: faCoffee },
-      { name: "education", icon: faCoffee },
-      { name: "household", icon: faCoffee },
-      { name: "entertainment", icon: faCoffee },
-      { name: "transportation", icon: faCoffee },
-      { name: "vet", icon: faCoffee },
-      { name: "others", icon: faCoffee },
+      { name: "food", icon: faHamburger },
+      { name: "health", icon: faMedkit },
+      { name: "education", icon: faUniversity },
+      { name: "household", icon: faHouseUser },
+      { name: "entertainment", icon: faFilm },
+      { name: "transportation", icon: faSubway },
+      { name: "vet", icon: faDog },
+      { name: "others", icon: faThLarge },
     ];
 
     this.classificationTypes = classificationTypes;
