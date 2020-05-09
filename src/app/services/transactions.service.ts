@@ -22,6 +22,7 @@ export class TransactionsService {
             item.createdAt = new Date(item.createdAt);
             item.amount = parseFloat(item.amount.toString());
             item.id = parseFloat(item.id.toString());
+            item.classification = "Unclassified";
             return item;
           });
 
