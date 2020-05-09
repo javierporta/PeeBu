@@ -33,7 +33,7 @@
   </kendo-grid-column>
   <kendo-grid-column field="classification" title="Classification" width="140">
   </kendo-grid-column>
-  <kendo-grid-command-column title="Tap to Classify" width="150">
+  <kendo-grid-command-column title="Tap to Classify" width="160">
     <ng-template kendoGridCellTemplate let-rowIndex="rowIndex">
       <span *ngFor="let classificationType of classificationTypes">
         <a
@@ -46,7 +46,7 @@
           class="btn btn-small"
           (click)="onClickClassifyBtn(rowIndex, classificationType.name)"
         >
-          <fa-icon [icon]="classificationType.icon" size="xs"></fa-icon>
+          <fa-icon [icon]="classificationType.icon" size="s"></fa-icon>
         </a>
       </span>
     </ng-template>
