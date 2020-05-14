@@ -24,4 +24,8 @@ export class AutoClassifierComponent implements OnInit {
   }
 
   onGetTransactionsError(error) {}
+
+  onAutoClassifyClick() {
+    alert("auto classify here");
+  }
 }
