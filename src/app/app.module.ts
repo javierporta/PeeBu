@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BalanceComponent } from "./balance/balance.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { TooltipModule } from '@progress/kendo-angular-tooltip';
+import { AutoClassifierComponent } from './auto-classifier/auto-classifier.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { TooltipModule } from '@progress/kendo-angular-tooltip';
     HomeComponent,
     ChartComponent,
     BalanceComponent,
+    AutoClassifierComponent,
   ],
   imports: [
     BrowserModule,
