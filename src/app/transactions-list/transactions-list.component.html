@@ -34,18 +34,23 @@
   <kendo-grid-column field="classification" title="Classification" width="140">
   </kendo-grid-column>
   <kendo-grid-command-column title="Tap to Classify" width="160">
-    <ng-template kendoGridCellTemplate let-rowIndex="rowIndex">
+    <ng-template kendoGridCellTemplate let-dataItem>
       <span *ngFor="let classificationType of classificationTypes" kendoTooltip>
         <a
           id="{{
-            'classify_' + classificationType.name + '_' + rowIndex + '_btn'
+            'classify_' +
+              classificationType.name +
+              '_' +
+              dataItem.id -
+              1 +
+              '_btn'
           }}"
           href="#/"
           role="button"
           aria-pressed="true"
           class="btn btn-small text-dark"
           [title]="classificationType.name"
-          (click)="onClickClassifyBtn(rowIndex, classificationType.name)"
+          (click)="onClickClassifyBtn(dataItem.id - 1, classificationType.name)"
         >
           <fa-icon [icon]="classificationType.icon" size="s"></fa-icon>
         </a>
