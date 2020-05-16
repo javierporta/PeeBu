@@ -12,8 +12,7 @@ import { GridModule } from "@progress/kendo-angular-grid";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BalanceComponent } from "./balance/balance.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { TooltipModule } from '@progress/kendo-angular-tooltip';
-
+import { TooltipModule } from "@progress/kendo-angular-tooltip";
 
 @NgModule({
   declarations: [
