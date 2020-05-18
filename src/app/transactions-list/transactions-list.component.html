@@ -7,6 +7,7 @@
   id="detailsKendoGrid"
   filterable="menu"
   [sortable]="true"
+  [groupable]="true"
 >
   <kendo-grid-column field="id" title="Id" width="60" [filterable]="false">
   </kendo-grid-column>
@@ -41,8 +42,7 @@
             'classify_' +
               classificationType.name +
               '_' +
-              dataItem.id -
-              1 +
+              (dataItem.id - 1).toString() +
               '_btn'
           }}"
           href="#/"
