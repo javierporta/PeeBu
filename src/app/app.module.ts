@@ -13,6 +13,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { BalanceComponent } from "./balance/balance.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { TooltipModule } from "@progress/kendo-angular-tooltip";
+import { ChartsModule } from '@progress/kendo-angular-charts';
+import 'hammerjs';
+
+
 
 @NgModule({
   declarations: [
@@ -31,6 +35,7 @@ import { TooltipModule } from "@progress/kendo-angular-tooltip";
     BrowserAnimationsModule,
     FontAwesomeModule,
     TooltipModule,
+    ChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
