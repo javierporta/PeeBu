@@ -8,7 +8,17 @@
   <kendo-chart>
     <kendo-chart-title text="Top 5 Expenses of Last Month - March 2020"></kendo-chart-title>
     <kendo-chart-series>
-      <kendo-chart-series-item type="column" [data]="seriesData" field="amount" categoryField="entity">
+      <kendo-chart-series-item type="column" [data]="seriesDataExpenses" field="amount" categoryField="entity">
+      </kendo-chart-series-item>
+    </kendo-chart-series>
+  </kendo-chart>
+</div>
+
+<div id="topIncomeMonthlyChart" [hidden]="!hasToShowCharts">
+  <kendo-chart>
+    <kendo-chart-title text="Top 3 Incomes of Last Month - March 2020"></kendo-chart-title>
+    <kendo-chart-series>
+      <kendo-chart-series-item type="column" [data]="seriesDataIncome" field="amount" categoryField="entity">
       </kendo-chart-series-item>
     </kendo-chart-series>
   </kendo-chart>

@@ -11,7 +11,7 @@ export class ChartComponent implements OnInit {
   transactions: TransactionModel[];
   hasToShowCharts: boolean = false
 
-  public seriesData: ExpenseChart[] = [];
+  public seriesDataExpenses: ChartModel[] = [];
 
   constructor(private transactionService: TransactionsService) { }
 
@@ -40,20 +40,18 @@ export class ChartComponent implements OnInit {
 
     let maxIndex = transactionsOfTheMonth.length >= 5 ? 5 : transactionsOfTheMonth.length - 1
 
-    let newSeriesData: ExpenseChart[] = []
+    let newSeriesDataExpenses: ChartModel[] = []
 
     //get top 5 highest transactions
     for (let index = 0; index < maxIndex; index++) {
       const transaction = transactionsOfTheMonth[index];
-      newSeriesData.push({ amount: transaction.amount, entity: transaction.entity + " (Id: " + transaction.id + ")" })
+      newSeriesDataExpenses.push({ amount: transaction.amount, entity: transaction.entity + " (Id: " + transaction.id + ")" })
     }
     //refresh chart
-    this.seriesData = newSeriesData
+    this.seriesDataExpenses = newSeriesDataExpenses
 
     //show chart
     this.hasToShowCharts = true
-
-    console.log(transactionsOfTheMonth)
   }
 
 }
