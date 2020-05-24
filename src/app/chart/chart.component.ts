@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TransactionsService } from '../services/transactions.service';
 import { TransactionModel } from '../models/transaction-model';
+import { LegendLabelsContentArgs } from '@progress/kendo-angular-charts';
 
 @Component({
   selector: 'app-chart',
@@ -12,8 +13,15 @@ export class ChartComponent implements OnInit {
   hasToShowCharts: boolean = false
 
   public seriesDataExpenses: ChartModel[] = [];
+  public seriesDataIncomes: ChartModel[] = [];
 
-  constructor(private transactionService: TransactionsService) { }
+  public labelContent(args: LegendLabelsContentArgs): string {
+    return `${args.dataItem.entity} - $${args.dataItem.amount}`;
+  }
+
+  constructor(private transactionService: TransactionsService) {
+    this.labelContent = this.labelContent.bind(this);
+  }
 
   ngOnInit() {
     this.transactionService.transactions.subscribe(
@@ -29,29 +37,60 @@ export class ChartComponent implements OnInit {
   onGetTransactionsError(error) { }
 
   showChartsClickButton() {
+    this.buildExpensesChart()
+    this.buildIncomesChart()
+    //show chart
+    this.hasToShowCharts = true
+  }
+
+  buildExpensesChart() {
     let startDate = new Date(2020, 2, 1) // March 1
     let endDate = new Date(2020, 3, 1) // April 1
 
-    //filter transaction between date and outcome
+    //filter transaction between date and expenses
     let transactionsOfTheMonth = this.transactions.filter(x => x.createdAt > startDate && x.createdAt < endDate && x.type !== "credit")
 
     //sort by amount desc
     transactionsOfTheMonth = transactionsOfTheMonth.sort((a, b) => (a.amount < b.amount) ? 1 : -1)
 
-    let maxIndex = transactionsOfTheMonth.length >= 5 ? 5 : transactionsOfTheMonth.length - 1
+    const maxNumberOfExpensesInChart = 5
 
-    let newSeriesDataExpenses: ChartModel[] = []
+    let maxIndex = transactionsOfTheMonth.length >= maxNumberOfExpensesInChart ? maxNumberOfExpensesInChart : transactionsOfTheMonth.length - 1
 
-    //get top 5 highest transactions
+    let newSeriesData: ChartModel[] = []
+
+    //get top highest transactions
     for (let index = 0; index < maxIndex; index++) {
       const transaction = transactionsOfTheMonth[index];
-      newSeriesDataExpenses.push({ amount: transaction.amount, entity: transaction.entity + " (Id: " + transaction.id + ")" })
+      newSeriesData.push({ amount: transaction.amount, entity: transaction.entity + " (Id: " + transaction.id + ")" })
     }
     //refresh chart
-    this.seriesDataExpenses = newSeriesDataExpenses
+    this.seriesDataExpenses = newSeriesData
+  }
 
-    //show chart
-    this.hasToShowCharts = true
+  buildIncomesChart() {
+    let startDate = new Date(2020, 2, 1) // March 1
+    let endDate = new Date(2020, 3, 1) // April 1
+
+    //filter transaction between date and income
+    let transactionsOfTheMonth = this.transactions.filter(x => x.createdAt > startDate && x.createdAt < endDate && x.type === "credit")
+
+    //sort by amount desc
+    transactionsOfTheMonth = transactionsOfTheMonth.sort((a, b) => (a.amount < b.amount) ? 1 : -1)
+
+    let maxNumberOfIncomesInChart = 3
+
+    let maxIndex = transactionsOfTheMonth.length >= maxNumberOfIncomesInChart ? maxNumberOfIncomesInChart : transactionsOfTheMonth.length - 1
+
+    let newSeriesData: ChartModel[] = []
+
+    //get top  highest transactions
+    for (let index = 0; index < maxIndex; index++) {
+      const transaction = transactionsOfTheMonth[index];
+      newSeriesData.push({ amount: transaction.amount, entity: transaction.entity + " (Id: " + transaction.id + ")" })
+    }
+    //refresh chart
+    this.seriesDataIncomes = newSeriesData
   }
 
 }

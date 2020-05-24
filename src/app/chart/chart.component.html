@@ -18,7 +18,8 @@
   <kendo-chart>
     <kendo-chart-title text="Top 3 Incomes of Last Month - March 2020"></kendo-chart-title>
     <kendo-chart-series>
-      <kendo-chart-series-item type="column" [data]="seriesDataIncome" field="amount" categoryField="entity">
+      <kendo-chart-series-item type="pie" [data]="seriesDataIncomes" field="amount" categoryField="entity"
+        [labels]="{ visible: true, content: labelContent }">
       </kendo-chart-series-item>
     </kendo-chart-series>
   </kendo-chart>
