@@ -20,8 +20,9 @@ import {
 export class TransactionsListComponent implements OnInit {
   transactions: TransactionModel[];
   classificationTypes = [];
+  hasErrorGettingTransactions = false;
 
-  constructor(private transactionService: TransactionsService) {}
+  constructor(private transactionService: TransactionsService) { }
 
   ngOnInit() {
     this.initClassification();
@@ -33,9 +34,13 @@ export class TransactionsListComponent implements OnInit {
 
   onGetTransactionsSuccess(result: TransactionModel[]) {
     this.transactions = result;
+    this.hasErrorGettingTransactions = false;
   }
 
-  onGetTransactionsError(error) {}
+  onGetTransactionsError(error) {
+    console.log('blaaaa')
+    this.hasErrorGettingTransactions = true;
+  }
 
   onClickClassifyBtn(rowIndex: number, classification: string) {
     this.transactions[rowIndex].classification = classification;

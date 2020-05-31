@@ -1,33 +1,21 @@
 <span></span>
 <h2 id="transactionsSubtitle" class="text-center">Transactions</h2>
 
-<kendo-grid
-  [kendoGridBinding]="transactions"
-  [height]="410"
-  id="detailsKendoGrid"
-  filterable="menu"
-  [sortable]="true"
-  [groupable]="true"
->
+<h5 id="transactionNetworkIssueErrorMessage" class="text-danger text-center mt-4 mb-4"
+  *ngIf="hasErrorGettingTransactions">Oops! Looks like we had an issue
+  bringing your transactions! We'll be
+  back soon!
+</h5>
+
+<kendo-grid [kendoGridBinding]="transactions" [height]="410" id="detailsKendoGrid" filterable="menu" [sortable]="true"
+  [groupable]="true">
   <kendo-grid-column field="id" title="Id" width="60" [filterable]="false">
   </kendo-grid-column>
-  <kendo-grid-column
-    field="createdAt"
-    title="Created Date"
-    format="{0: dd/MM/yyyy h:mm a }"
-    width="180"
-    filter="date"
-  >
+  <kendo-grid-column field="createdAt" title="Created Date" format="{0: dd/MM/yyyy h:mm a }" width="180" filter="date">
   </kendo-grid-column>
   <kendo-grid-column field="entity" title="Entity" width="140">
   </kendo-grid-column>
-  <kendo-grid-column
-    field="amount"
-    title="Price"
-    width="100"
-    filter="numeric"
-    format="{0:c}"
-  >
+  <kendo-grid-column field="amount" title="Price" width="100" filter="numeric" format="{0:c}">
   </kendo-grid-column>
   <kendo-grid-column field="type" title="Type" width="100"> </kendo-grid-column>
   <kendo-grid-column field="source" title="Source" width="120">
@@ -37,21 +25,14 @@
   <kendo-grid-command-column title="Tap to Classify" width="160">
     <ng-template kendoGridCellTemplate let-dataItem>
       <span *ngFor="let classificationType of classificationTypes" kendoTooltip>
-        <a
-          id="{{
+        <a id="{{
             'classify_' +
               classificationType.name +
               '_' +
               (dataItem.id - 1).toString() +
               '_btn'
-          }}"
-          href="#/"
-          role="button"
-          aria-pressed="true"
-          class="btn btn-small text-dark"
-          [title]="classificationType.name"
-          (click)="onClickClassifyBtn(dataItem.id - 1, classificationType.name)"
-        >
+          }}" href="#/" role="button" aria-pressed="true" class="btn btn-small text-dark"
+          [title]="classificationType.name" (click)="onClickClassifyBtn(dataItem.id - 1, classificationType.name)">
           <fa-icon [icon]="classificationType.icon" size="s"></fa-icon>
         </a>
       </span>

@@ -30,6 +30,7 @@ export class TransactionsService {
         },
         (error) => {
           console.error("API Error" + error);
+          this._transactions.error(error)
         }
       );
   }
