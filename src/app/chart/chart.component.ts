@@ -62,7 +62,7 @@ export class ChartComponent implements OnInit {
     //get top highest transactions
     for (let index = 0; index < maxIndex; index++) {
       const transaction = transactionsOfTheMonth[index];
-      newSeriesData.push({ amount: transaction.amount, entity: transaction.entity + " (Id: " + transaction.id + ")" })
+      newSeriesData.push({ amount: transaction.amount, entity: transaction.entity })
     }
     //refresh chart
     this.seriesDataExpenses = newSeriesData
@@ -87,7 +87,7 @@ export class ChartComponent implements OnInit {
     //get top  highest transactions
     for (let index = 0; index < maxIndex; index++) {
       const transaction = transactionsOfTheMonth[index];
-      newSeriesData.push({ amount: transaction.amount, entity: transaction.entity + " (Id: " + transaction.id + ")" })
+      newSeriesData.push({ amount: transaction.amount, entity: transaction.entity })
     }
     //refresh chart
     this.seriesDataIncomes = newSeriesData
