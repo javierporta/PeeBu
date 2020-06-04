@@ -4,25 +4,54 @@
   </button>
 </div>
 
-<div class="row">
-  <div id="topExpensesMonthlyChart" class="col-6" [hidden]="!hasToShowCharts">
-    <kendo-chart>
-      <kendo-chart-title text="Top 5 Expenses of Last Month - March 2020"></kendo-chart-title>
-      <kendo-chart-series>
-        <kendo-chart-series-item type="column" [data]="seriesDataExpenses" field="amount" categoryField="entity">
-        </kendo-chart-series-item>
-      </kendo-chart-series>
-    </kendo-chart>
+<div [hidden]="!hasToShowCharts">
+  <div class="row">
+    <div id="topExpensesMonthlyChart" class="col-6">
+      <kendo-chart>
+        <kendo-chart-title text="Top 5 Expenses of Last Month - March 2020"></kendo-chart-title>
+        <kendo-chart-series>
+          <kendo-chart-series-item type="column" [data]="seriesDataExpenses" field="amount" categoryField="entity">
+          </kendo-chart-series-item>
+        </kendo-chart-series>
+      </kendo-chart>
+    </div>
+
+    <div id="topIncomeMonthlyChart" class="col-6">
+      <kendo-chart>
+        <kendo-chart-title text="Top 3 Incomes of Last Month - March 2020"></kendo-chart-title>
+        <kendo-chart-series>
+          <kendo-chart-series-item type="pie" [data]="seriesDataIncomes" field="amount" categoryField="entity"
+            [labels]="{ visible: true, content: labelContent }">
+          </kendo-chart-series-item>
+        </kendo-chart-series>
+      </kendo-chart>
+    </div>
   </div>
 
-  <div id="topIncomeMonthlyChart" class="col-6" [hidden]="!hasToShowCharts">
-    <kendo-chart>
-      <kendo-chart-title text="Top 3 Incomes of Last Month - March 2020"></kendo-chart-title>
-      <kendo-chart-series>
-        <kendo-chart-series-item type="pie" [data]="seriesDataIncomes" field="amount" categoryField="entity"
-          [labels]="{ visible: true, content: labelContent }">
-        </kendo-chart-series-item>
-      </kendo-chart-series>
-    </kendo-chart>
+  <div class="row mt-4">
+    <div class="col-md-6 offset-md-3">
+      <h4>Latest Transactions</h4>
+      <ul class="timeline">
+        <li>
+          <a rel="noopener noreferrer" target="_blank" href="https://www.totoprayogo.com/#">New Web Design</a>
+          <a href="#" class="float-right">21 March, 2014</a>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, et
+            elementum
+            lorem ornare. Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales vehicula....</p>
+        </li>
+        <li>
+          <a href="#">21 000 Job Seekers</a>
+          <a href="#" class="float-right">4 March, 2014</a>
+          <p>Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo
+            accumsan, sed semper nisi sollicitudin...</p>
+        </li>
+        <li>
+          <a href="#">Awesome Employers</a>
+          <a href="#" class="float-right">1 April, 2014</a>
+          <p>Fusce ullamcorper ligula sit amet quam accumsan aliquet. Sed nulla odio, tincidunt vitae nunc vitae, mollis
+            pharetra velit. Sed nec tempor nibh...</p>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
