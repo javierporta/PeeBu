@@ -8,7 +8,7 @@
   <div class="row">
     <div id="topExpensesMonthlyChart" class="col-6">
       <kendo-chart>
-        <kendo-chart-title text="Top 5 Expenses of Last Month - March 2020"></kendo-chart-title>
+        <kendo-chart-title text="Top 5 Expenses of Last Month - {{lastMonthName}} 2020"></kendo-chart-title>
         <kendo-chart-series>
           <kendo-chart-series-item type="column" [data]="seriesDataExpenses" field="amount" categoryField="entity">
           </kendo-chart-series-item>
@@ -18,7 +18,7 @@
 
     <div id="topIncomeMonthlyChart" class="col-6">
       <kendo-chart>
-        <kendo-chart-title text="Top 3 Incomes of Last Month - March 2020"></kendo-chart-title>
+        <kendo-chart-title text="Top 3 Incomes of Last Month - {{lastMonthName}} 2020"></kendo-chart-title>
         <kendo-chart-series>
           <kendo-chart-series-item type="pie" [data]="seriesDataIncomes" field="amount" categoryField="entity"
             [labels]="{ visible: true, content: labelContent }">

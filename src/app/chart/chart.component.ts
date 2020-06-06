@@ -12,6 +12,7 @@ export class ChartComponent implements OnInit {
   transactions: TransactionModel[];
   hasToShowCharts: boolean = false
   lastTransactions: TransactionModel[];
+  lastMonthName: string = ""
 
   public seriesDataExpenses: ChartModel[] = [];
   public seriesDataIncomes: ChartModel[] = [];
@@ -46,10 +47,10 @@ export class ChartComponent implements OnInit {
   }
 
   buildExpensesChart() {
-    //ToDo: Get last transaction month
+    let lastMonth = this.getLastMonth()
 
-    let startDate = new Date(2020, 2, 1) // March 1
-    let endDate = new Date(2020, 3, 1) // April 1
+    let startDate = new Date(2020, lastMonth, 1)
+    let endDate = new Date(2020, lastMonth + 1, 1)
 
     //filter transaction between date and expenses
     let transactionsOfTheMonth = this.transactions.filter(x => x.createdAt > startDate && x.createdAt < endDate && x.type !== "credit")
@@ -73,10 +74,10 @@ export class ChartComponent implements OnInit {
   }
 
   buildIncomesChart() {
-    //ToDo: Get last transaction month
+    let lastMonth = this.getLastMonth()
 
-    let startDate = new Date(2020, 2, 1) // March 1
-    let endDate = new Date(2020, 3, 1) // April 1
+    let startDate = new Date(2020, lastMonth, 1)
+    let endDate = new Date(2020, lastMonth + 1, 1)
 
     //filter transaction between date and income
     let transactionsOfTheMonth = this.transactions.filter(x => x.createdAt > startDate && x.createdAt < endDate && x.type === "credit")
@@ -107,4 +108,21 @@ export class ChartComponent implements OnInit {
     console.log(this.lastTransactions)
   }
 
+  getLastMonth() {
+    let transactionSorted = this.transactions;
+    transactionSorted.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : -1)
+    let lastTransaction = transactionSorted[0]
+    let lastTransactionMonth = lastTransaction.createdAt.getMonth()
+
+    this.lastMonthName = monthNames[lastTransactionMonth]
+
+    return lastTransactionMonth
+  }
+
+
+
 }
+
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
