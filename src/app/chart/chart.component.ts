@@ -11,6 +11,7 @@ import { LegendLabelsContentArgs } from '@progress/kendo-angular-charts';
 export class ChartComponent implements OnInit {
   transactions: TransactionModel[];
   hasToShowCharts: boolean = false
+  lastTransactions: TransactionModel[];
 
   public seriesDataExpenses: ChartModel[] = [];
   public seriesDataIncomes: ChartModel[] = [];
@@ -32,6 +33,7 @@ export class ChartComponent implements OnInit {
 
   onGetTransactionsSuccess(result: TransactionModel[]) {
     this.transactions = result;
+    this.getLastTransactions()
   }
 
   onGetTransactionsError(error) { }
@@ -44,6 +46,8 @@ export class ChartComponent implements OnInit {
   }
 
   buildExpensesChart() {
+    //ToDo: Get last transaction month
+
     let startDate = new Date(2020, 2, 1) // March 1
     let endDate = new Date(2020, 3, 1) // April 1
 
@@ -69,6 +73,8 @@ export class ChartComponent implements OnInit {
   }
 
   buildIncomesChart() {
+    //ToDo: Get last transaction month
+
     let startDate = new Date(2020, 2, 1) // March 1
     let endDate = new Date(2020, 3, 1) // April 1
 
@@ -91,6 +97,14 @@ export class ChartComponent implements OnInit {
     }
     //refresh chart
     this.seriesDataIncomes = newSeriesData
+  }
+
+  getLastTransactions() {
+    this.lastTransactions = this.transactions
+    this.lastTransactions.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : -1)
+    this.lastTransactions = this.lastTransactions.slice(0, 10)
+
+    console.log(this.lastTransactions)
   }
 
 }
