@@ -33,7 +33,8 @@
       <h4>Latest Transactions</h4>
       <ul class="timeline">
         <li *ngFor="let transaction of lastTransactions">
-          <strong>{{transaction.amount | currency}}</strong>
+          <strong
+            [ngStyle]="{'color': (transaction.type === 'credit') ? 'green' : 'red'}">{{transaction.type === 'credit' ? '+' : '-'}}{{transaction.amount | currency}}</strong>
           <strong class="float-right">{{transaction.createdAt | date: 'medium'}}</strong>
           <p>{{transaction.entity}}</p>
         </li>
