@@ -1,5 +1,44 @@
-<div class="text-center">
-  <button id="showChartBtnId" type="button" class="btn btn-primary ">
-    Show Chart
+<div class="text-center mt-4 mb-2">
+  <button id="showChartBtnId" type="button" class="btn btn-primary" (click)="showChartsClickButton()">
+    Show Charts
   </button>
+</div>
+
+<div [hidden]="!hasToShowCharts">
+  <div class="row">
+    <div id="topExpensesMonthlyChart" class="col-6">
+      <kendo-chart>
+        <kendo-chart-title text="Top 5 Expenses of Last Month - {{lastMonthName}} 2020"></kendo-chart-title>
+        <kendo-chart-series>
+          <kendo-chart-series-item type="column" [data]="seriesDataExpenses" field="amount" categoryField="entity">
+          </kendo-chart-series-item>
+        </kendo-chart-series>
+      </kendo-chart>
+    </div>
+
+    <div id="topIncomeMonthlyChart" class="col-6">
+      <kendo-chart>
+        <kendo-chart-title text="Top 3 Incomes of Last Month - {{lastMonthName}} 2020"></kendo-chart-title>
+        <kendo-chart-series>
+          <kendo-chart-series-item type="pie" [data]="seriesDataIncomes" field="amount" categoryField="entity"
+            [labels]="{ visible: true, content: labelContent }">
+          </kendo-chart-series-item>
+        </kendo-chart-series>
+      </kendo-chart>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div id="latestTransactionSection" class="col-md-6 offset-md-3">
+      <h4 id="latestTransactionTitleId">Latest Transactions</h4>
+      <ul class="timeline">
+        <li *ngFor="let transaction of lastTransactions">
+          <strong
+            [ngStyle]="{'color': (transaction.type === 'credit') ? 'green' : 'red'}">{{transaction.type === 'credit' ? '+' : '-'}}{{transaction.amount | currency}}</strong>
+          <strong class="float-right">{{transaction.createdAt | date: 'medium'}}</strong>
+          <p>{{transaction.entity}}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

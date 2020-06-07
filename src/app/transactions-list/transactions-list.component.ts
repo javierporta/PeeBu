@@ -20,8 +20,9 @@ import {
 export class TransactionsListComponent implements OnInit {
   transactions: TransactionModel[];
   classificationTypes = [];
+  hasErrorGettingTransactions = false;
 
-  constructor(private transactionService: TransactionsService) {}
+  constructor(private transactionService: TransactionsService) { }
 
   ngOnInit() {
     this.initClassification();
@@ -33,13 +34,22 @@ export class TransactionsListComponent implements OnInit {
 
   onGetTransactionsSuccess(result: TransactionModel[]) {
     this.transactions = result;
+    this.hasErrorGettingTransactions = false;
   }
 
-  onGetTransactionsError(error) {}
+  onGetTransactionsError(error) {
+    console.log('blaaaa')
+    this.hasErrorGettingTransactions = true;
+  }
 
   onClickClassifyBtn(rowIndex: number, classification: string) {
     this.transactions[rowIndex].classification = classification;
     this.transactionService.setTransactions(this.transactions);
+
+    this.tryToAutoClassifyTransactions(
+      this.transactions[rowIndex],
+      classification
+    );
   }
 
   initClassification() {
@@ -55,5 +65,26 @@ export class TransactionsListComponent implements OnInit {
     ];
 
     this.classificationTypes = classificationTypes;
+  }
+
+  tryToAutoClassifyTransactions(
+    sampleTransaction: TransactionModel,
+    newClassification: string
+  ) {
+    //Look for transactions with the same: Entity, Source and Type, AND not classified yet!
+    var matchedTransactions = this.transactions.filter(
+      (it) =>
+        it.entity == sampleTransaction.entity &&
+        it.source == sampleTransaction.source &&
+        it.type == sampleTransaction.type &&
+        it.classification.toLowerCase() == "unclassified"
+    );
+
+    //Autoclassify matched transactions
+    matchedTransactions.forEach((transaction) => {
+      transaction.classification = newClassification;
+    });
+
+    this.transactionService.setTransactions(this.transactions);
   }
 }

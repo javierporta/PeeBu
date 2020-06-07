@@ -22,7 +22,7 @@ export class TransactionsService {
             item.createdAt = new Date(item.createdAt);
             item.amount = parseFloat(item.amount.toString());
             item.id = parseFloat(item.id.toString());
-            item.classification = "Unclassified";
+            item.classification = "unclassified";
             return item;
           });
 
@@ -30,6 +30,7 @@ export class TransactionsService {
         },
         (error) => {
           console.error("API Error" + error);
+          this._transactions.error(error)
         }
       );
   }
