@@ -104,8 +104,6 @@ export class ChartComponent implements OnInit {
     this.lastTransactions = this.transactions
     this.lastTransactions.sort((a, b) => (a.createdAt < b.createdAt) ? 1 : -1)
     this.lastTransactions = this.lastTransactions.slice(0, 10)
-
-    console.log(this.lastTransactions)
   }
 
   getLastMonth() {

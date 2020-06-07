@@ -38,11 +38,11 @@ export class TransactionsListComponent implements OnInit {
   }
 
   onGetTransactionsError(error) {
-    console.log('blaaaa')
     this.hasErrorGettingTransactions = true;
   }
 
-  onClickClassifyBtn(rowIndex: number, classification: string) {
+  onClickClassifyBtn(id: number, classification: string) {
+    let rowIndex = this.transactions.findIndex(x => x.id == id)
     this.transactions[rowIndex].classification = classification;
     this.transactionService.setTransactions(this.transactions);
 

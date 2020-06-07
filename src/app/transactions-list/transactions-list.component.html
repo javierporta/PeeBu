@@ -29,10 +29,10 @@
             'classify_' +
               classificationType.name +
               '_' +
-              (dataItem.id - 1).toString() +
+              (dataItem.id).toString() +
               '_btn'
           }}" href="#/" role="button" aria-pressed="true" class="btn btn-small text-dark"
-          [title]="classificationType.name" (click)="onClickClassifyBtn(dataItem.id - 1, classificationType.name)">
+          [title]="classificationType.name" (click)="onClickClassifyBtn(dataItem.id, classificationType.name)">
           <fa-icon [icon]="classificationType.icon" size="s"></fa-icon>
         </a>
       </span>
