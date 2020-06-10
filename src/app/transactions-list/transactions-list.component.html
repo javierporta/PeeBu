@@ -8,14 +8,14 @@
 </h5>
 
 <kendo-grid [kendoGridBinding]="transactions" [height]="410" id="detailsKendoGrid" filterable="menu" [sortable]="true"
-  [groupable]="true">
+  [groupable]="true" [rowClass]="rowCallback">
   <kendo-grid-column field="id" title="Id" width="60" [filterable]="false">
   </kendo-grid-column>
   <kendo-grid-column field="createdAt" title="Created Date" format="{0: dd/MM/yyyy h:mm a }" width="180" filter="date">
   </kendo-grid-column>
   <kendo-grid-column field="entity" title="Entity" width="140">
   </kendo-grid-column>
-  <kendo-grid-column field="amount" title="Price" width="100" filter="numeric" format="{0:c}">
+  <kendo-grid-column field="amount" title="Amount" width="100" filter="numeric" format="{0:c}">
   </kendo-grid-column>
   <kendo-grid-column field="type" title="Type" width="100"> </kendo-grid-column>
   <kendo-grid-column field="source" title="Source" width="120">
