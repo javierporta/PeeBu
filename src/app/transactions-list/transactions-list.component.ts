@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { TransactionsService } from "../services/transactions.service";
 import { TransactionModel } from "../models/transaction-model";
 import {
@@ -11,11 +11,13 @@ import {
   faDog,
   faThLarge,
 } from "@fortawesome/free-solid-svg-icons";
+import { RowClassArgs } from '@progress/kendo-angular-grid';
 
 @Component({
   selector: "app-transactions-list",
   templateUrl: "./transactions-list.component.html",
   styleUrls: ["./transactions-list.component.scss"],
+  encapsulation: ViewEncapsulation.None,
 })
 export class TransactionsListComponent implements OnInit {
   transactions: TransactionModel[];
@@ -86,5 +88,12 @@ export class TransactionsListComponent implements OnInit {
     });
 
     this.transactionService.setTransactions(this.transactions);
+  }
+
+  public rowCallback(context: RowClassArgs) {
+    let isClassified = context.dataItem.classification.toLowerCase() != "unclassified"
+    return {
+      highlighted: isClassified
+    };
   }
 }
