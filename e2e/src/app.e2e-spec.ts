@@ -10,7 +10,14 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('PeeBu app is running!');
+    //NOTE: Peebu is a angular model variable. By this E2E test we ensure the correct binding withouth knowing the implementation! 
+    expect(page.getTitleText()).toEqual('Welcome to PeeBu');
+  });
+
+  it('should display charts', () => {
+    page.navigateTo();
+
+    //ToDo
   });
 
   afterEach(async () => {

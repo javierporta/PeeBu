@@ -14,8 +14,8 @@ export class ChartComponent implements OnInit {
   lastTransactions: TransactionModel[];
   lastMonthName: string = ""
 
-  public seriesDataExpenses: ChartModel[] = [];
-  public seriesDataIncomes: ChartModel[] = [];
+  public seriesDataExpenses = [];
+  public seriesDataIncomes = [];
 
   public labelContent(args: LegendLabelsContentArgs): string {
     return `${args.dataItem.entity} - $${args.dataItem.amount}`;
@@ -62,7 +62,7 @@ export class ChartComponent implements OnInit {
 
     let maxIndex = transactionsOfTheMonth.length >= maxNumberOfExpensesInChart ? maxNumberOfExpensesInChart : transactionsOfTheMonth.length - 1
 
-    let newSeriesData: ChartModel[] = []
+    let newSeriesData = []
 
     //get top highest transactions
     for (let index = 0; index < maxIndex; index++) {
@@ -89,7 +89,7 @@ export class ChartComponent implements OnInit {
 
     let maxIndex = transactionsOfTheMonth.length >= maxNumberOfIncomesInChart ? maxNumberOfIncomesInChart : transactionsOfTheMonth.length - 1
 
-    let newSeriesData: ChartModel[] = []
+    let newSeriesData = []
 
     //get top  highest transactions
     for (let index = 0; index < maxIndex; index++) {
