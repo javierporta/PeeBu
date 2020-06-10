@@ -23,6 +23,7 @@ describe('AppComponent', () => {
   it(`app title should be 'PeeBu'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
+    //NOTE: here we test that title model variable is PeeBu 
     expect(app.title).toEqual('PeeBu');
   });
 

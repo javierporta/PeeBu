@@ -8,4 +8,13 @@ export class AppPage {
   getTitleText() {
     return element(by.id('titleId')).getText() as Promise<string>;
   }
+
+  getShowChartsBttn() {
+    return element(by.id('showChartBtnId'));
+  }
+
+  getTopIncomeChart() {
+    return element(by.id('topIncomeMonthlyChart'));
+  }
+
 }

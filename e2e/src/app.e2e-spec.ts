@@ -14,10 +14,13 @@ describe('workspace-project App', () => {
     expect(page.getTitleText()).toEqual('Welcome to PeeBu');
   });
 
-  it('should display charts', () => {
+  //It should be in other file. Only here for showing purposes
+  it('should display top income chart', () => {
     page.navigateTo();
+    let showChartBtn = page.getShowChartsBttn();
+    showChartBtn.click();
 
-    //ToDo
+    expect(page.getTopIncomeChart().isPresent()).toBe(true)
   });
 
   afterEach(async () => {
