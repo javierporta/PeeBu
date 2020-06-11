@@ -26,6 +26,17 @@
         </kendo-chart-series>
       </kendo-chart>
     </div>
+
+    <div id="classificationChartId" class="col-12">
+      <kendo-chart>
+        <kendo-chart-title text="Classifications Chart"></kendo-chart-title>
+        <kendo-chart-series>
+          <kendo-chart-series-item type="column" [data]="seriesDataClassification" field="count"
+            categoryField="classification">
+          </kendo-chart-series-item>
+        </kendo-chart-series>
+      </kendo-chart>
+    </div>
   </div>
 
   <div class="row mt-4">

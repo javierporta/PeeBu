@@ -16,6 +16,7 @@ export class ChartComponent implements OnInit {
 
   public seriesDataExpenses: ChartModel[] = [];
   public seriesDataIncomes: ChartModel[] = [];
+  public seriesDataClassification = [];
 
   public labelContent(args: LegendLabelsContentArgs): string {
     return `${args.dataItem.entity} - $${args.dataItem.amount}`;
@@ -42,6 +43,7 @@ export class ChartComponent implements OnInit {
   showChartsClickButton() {
     this.buildExpensesChart()
     this.buildIncomesChart()
+    this.buildClassificationChart()
     //show chart
     this.hasToShowCharts = true
   }
@@ -98,6 +100,24 @@ export class ChartComponent implements OnInit {
     }
     //refresh chart
     this.seriesDataIncomes = newSeriesData
+  }
+
+  buildClassificationChart() {
+    var counts = this.transactions.reduce((p, c) => {
+      var classification = c.classification;
+      if (!p.hasOwnProperty(classification)) {
+        p[classification] = 0;
+      }
+      p[classification]++;
+      return p;
+    }, {});
+
+    var countsExtended = Object.keys(counts).map(k => {
+      return { classification: k, count: counts[k] };
+    });
+
+    console.log(countsExtended);
+    this.seriesDataClassification = countsExtended;
   }
 
   getLastTransactions() {
